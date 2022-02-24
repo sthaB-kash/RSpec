@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
-  subject { Movie.new(title: 'title', director: 'director', rate: 4) }
+  # subject { Movie.new(title: 'title', director: 'director', rate: 4) }
+  subject do
+    described_class.new(    # use described_class instead of class name
+      title: 'ROR',
+      director: 'Bikash',
+      rate: 5
+    )
+  end
 
   before { subject.save }
 
