@@ -66,3 +66,4 @@ group :development do
 end
 
 gem 'rspec-rails'
+gem 'rails-controller-testing'
