@@ -3,6 +3,7 @@ require_relative '../calculator'
 
 RSpec.describe Calculator do
   subject(:calc) { described_class.new(25, 5) }
+
   context '#add' do
     it 'should return sum' do
       expect(calc.add).to eq 30
@@ -26,9 +27,16 @@ RSpec.describe Calculator do
       expect(calc.divide).to eq 5
     end
 
-    it 'should return divide by zero' do
-      calc = Calculator.new(3, 0)
-      expect(calc.divide).to eq 'can not divide by zero'
+    # it 'should return divide by zero' do
+    #   calc = Calculator.new(3, 0)
+    #   expect(calc.divide).to eq 'can not divide by zero'
+    # end
+  end
+
+  context 'ZeroDivisionError' do
+    it 'should raise ZeroDivisionError' do
+      calc = Calculator.new(5, 0)
+      expect { calc.divide }.to raise_error(ZeroDivisionError, 'divided by 0')
     end
   end
 end
